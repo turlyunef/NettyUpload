@@ -15,7 +15,9 @@ where,
 ● uploadport is port where Netty POST server listens
 
 So, finally, e.g.
+
 GET http://127.0.0.1:8080/getUploadUrl?md5sum=68b329da9893e34099c7d8ad5cb9c940
+
 Response (json):
 {
 	‘url’: http://127.0.0.1:8081/upload/68b329da9893e34099c7d8ad5cb9c940
@@ -24,7 +26,9 @@ Response (json):
 # Endpoint 2. Upload the file to the server
 
 The endpoint allows a user to upload the file to the server.
+
 POST: file -> http://127.0.0.1:8081/upload/68b329da9893e34099c7d8ad5cb9c940
+
 Response (json):
 {
 	‘status’: OK
@@ -42,6 +46,7 @@ used 1 hour more to get status of the upload.
 The special endpoint which displays the progress in bytes. It uses one-time upload hash to
 get the status
 GET http://127.0.0.1:8080/progress/68b329da9893e34099c7d8ad5cb9c940
+
 Response (json):
 {
 	‘size’: 1234567788,
