@@ -25,6 +25,7 @@
 		<dockerfile-maven.version>1.4.4</dockerfile-maven.version>
 		<maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
 		<netty.version>4.1.29.Final</netty.version>
+		<jackson-databind.version>2.6.3</jackson-databind.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -34,7 +35,6 @@
 				<version>3.8.1</version>
 				<scope>test</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-log4j12</artifactId>
@@ -50,14 +50,19 @@
 				<artifactId>guava</artifactId>
 				<version>${google.guava.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson-databind.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>Resources</directory>
-            </resource>
-        </resources>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>Resources</directory>
+			</resource>
+		</resources>
 	</build>
 </project>
