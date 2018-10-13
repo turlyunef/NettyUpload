@@ -8,13 +8,12 @@ import ru.turlyunef.core.ServerRuntime;
 public class App {
 	public static void main(String[] args) {
 		int port;
-		if (args.length > 0) {
-			port = Integer.parseInt(args[0]);
-		} else {
-			port = 8080;
-		}
+		String host;
+		host = "localhost"; //!!!put in a config file with constants
+		port = 8080; //!!!put in a config file with constants
+		
 		try {
-			new ServerRuntime(port).run();
+			new ServerRuntime(host, port).run();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

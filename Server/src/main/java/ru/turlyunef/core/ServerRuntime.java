@@ -12,14 +12,16 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-
 public class ServerRuntime {
 	private static Logger logger = LoggerFactory.getLogger(ServerRuntime.class);
 	private int port;
-	
-	public ServerRuntime(int port) {
+	private String host;
+
+	public ServerRuntime(String host, int port) {
 		this.port = port;
+		this.host = host;
 	}
+
 	public void run() throws Exception {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -34,9 +36,9 @@ public class ServerRuntime {
 					}).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true);
 
 			// Bind and start to accept incoming connections.
-			ChannelFuture f = b.bind(port).sync();
+			ChannelFuture f = b.bind(host, port).sync();
 			logger.info("+++++++++++++++++++Server is started");
-			
+
 			// Wait until the server socket is closed.
 			f.channel().closeFuture().sync();
 		} finally {
